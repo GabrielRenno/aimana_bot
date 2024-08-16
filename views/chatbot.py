@@ -35,10 +35,12 @@ if prompt := st.chat_input("What is up?"):
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=":material/smart_toy:"):
         response = response_generator(prompt)  # Get the assistant's response
+        # Stream the response word by word
+        response_container = st.empty()
         for word in response.split():
-            yield word + " "
+            response_container.markdown(word + " ", unsafe_allow_html=True)
             time.sleep(0.05)
-        st.markdown(response)
+        response_container.markdown(response, unsafe_allow_html=True)
     
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})

@@ -44,7 +44,7 @@ if authentication_status == True:
     # --- PAGE SETUP ---
     login_page = st.Page(
         page = "views/about.py",
-        title = "Aimana",
+        title = "AImana",
         icon = ":material/account_circle:", #https://fonts.google.com/icons
         default = True
     )
@@ -62,9 +62,9 @@ if authentication_status == True:
     # --- SHARED ON ALL PAGES ---
     st.logo("assets/logo.jpeg")
     auth.logout(":material/logout:",'sidebar')
-    st.sidebar.text("Developed by Aimana")
+    st.sidebar.text("Developed by AImana")
     st.sidebar.text("Version 0.0.1")
-    
+
     # --- RUN NAVIGATION ---
     pg.run()
 

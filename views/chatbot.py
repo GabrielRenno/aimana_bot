@@ -1,6 +1,6 @@
 import streamlit as st
 from views.chatbot_functions.response import response_generator
-
+import time
 
 # Clear chat button
 if st.button("Clear Chat"):
@@ -35,6 +35,9 @@ if prompt := st.chat_input("What is up?"):
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=":material/smart_toy:"):
         response = response_generator(prompt)  # Get the assistant's response
+        for word in response.split():
+            yield word + " "
+            time.sleep(0.05)
         st.markdown(response)
     
     # Add assistant response to chat history

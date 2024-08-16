@@ -4,7 +4,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain_openai import ChatOpenAI
 
 # Create a ChatOpenAI model
-#model = ChatOpenAI(model="gpt-4o", api_key=st.secrets["OPENAI_API_KEY"])
+model = ChatOpenAI(model="gpt-4o", api_key=st.secrets["OPENAI_API_KEY"])
 
 # Define prompt templates (no need for separate Runnable chains)
 prompt_template = ChatPromptTemplate.from_messages(
@@ -17,14 +17,14 @@ prompt_template = ChatPromptTemplate.from_messages(
 )
 
 # Create the combined chain using LangChain Expression Language (LCEL)
-#chain = prompt_template | model | StrOutputParser()
-
+chain = prompt_template | model | StrOutputParser()
+print("Chain created")
 
 def response_generator(prompt, messages):
     response = prompt
     messages = messages
     st.write(messages)
-    response = "yes" #chain.invoke({"user_query": prompt, "chat_history": messages})
+    response = chain.invoke({"user_query": prompt, "chat_history": messages})
     return str(response)
 
 

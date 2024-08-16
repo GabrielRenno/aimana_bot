@@ -4,7 +4,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain_openai import ChatOpenAI
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4o", api_key=st.secrets["OPENAI_API_KEY"])
+#model = ChatOpenAI(model="gpt-4o", api_key=st.secrets["OPENAI_API_KEY"])
 
 # Define prompt templates (no need for separate Runnable chains)
 prompt_template = ChatPromptTemplate.from_messages(

@@ -60,11 +60,11 @@ if authentication_status == True:
     pg = st.navigation(pages = [login_page, chatbot_page])
 
     # --- NAVIGATION SETUP [WITH SECTIONS] ---
-    pg = st.navigation(
-        {
-            "About": [login_page],
-            "Funtionalities": [chatbot_page]
-        })
+    #pg = st.navigation(
+    #    {
+    #        "About": [login_page],
+    #        "Funtionalities": [chatbot_page]
+    #    })
 
     # --- SHARED ON ALL PAGES ---
     st.logo("assets/logo.jpeg")

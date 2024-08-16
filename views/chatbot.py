@@ -37,8 +37,10 @@ if prompt := st.chat_input("What is up?"):
         response = response_generator(prompt)  # Get the assistant's response
         # Stream the response word by word
         response_container = st.empty()
+        complete_string = ""
         for word in response.split():
-            response_container += response_container.markdown(word + " ", unsafe_allow_html=True)
+            complete_string += word + " "
+            response_container.markdown(word + " ", unsafe_allow_html=True)
             time.sleep(2.05)
         response_container.markdown(response, unsafe_allow_html=True)
     

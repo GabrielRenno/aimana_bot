@@ -1,6 +1,5 @@
 import streamlit as st
 import pickle
-from pathlib import Path
 import streamlit_authenticator as stauth
 import yaml
 

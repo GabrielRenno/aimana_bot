@@ -4,6 +4,17 @@ import streamlit_authenticator as stauth
 import yaml
 
 
+## REMOVE STREAMLIT HEADER AND FOOTER
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
+
 # --- USER AUTHENTICATION ---
 from yaml.loader import SafeLoader
 with open('auth/credentials.yaml') as file:
@@ -59,14 +70,7 @@ if authentication_status == True:
     st.logo("assets/logo.jpeg")
     auth.logout(":material/logout:",'sidebar')
     st.sidebar.text("Developed by Aimana")
-    hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-    st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
     # --- RUN NAVIGATION ---
     pg.run()

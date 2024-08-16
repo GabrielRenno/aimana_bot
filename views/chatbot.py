@@ -34,3 +34,4 @@ if prompt := st.chat_input("What is up?"):
 # Restart chat button
 if st.button("Restart Chat"):
     st.session_state.messages = []
+    st.experimental_rerun()

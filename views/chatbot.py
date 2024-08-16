@@ -1,42 +1,43 @@
-import openai
-import streamlit as st
-from openai.error import AuthenticationError  # Import the correct exception
+ import streamlit as st
+import random
+import time
 
-st.title("ChatGPT-like clone")
 
-# Set your OpenAI API key
-openai.api_key = "your_openai_api_key"
+# Streamed response emulator
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
 
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
 
+st.title("Simple chat")
+
+# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display the chat messages
+# Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Handle user input
+# Accept user input
 if prompt := st.chat_input("What is up?"):
+    # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Send the user input to OpenAI and get the response
-    try:
-        response = openai.ChatCompletion.create(
-            model=st.session_state["openai_model"],
-            messages=st.session_state.messages
-        )
-        assistant_message = response['choices'][0]['message']['content']
-        st.session_state.messages.append({"role": "assistant", "content": assistant_message})
-
-        with st.chat_message("assistant"):
-            st.markdown(assistant_message)
-
-    except AuthenticationError:
-        st.error("Authentication failed. Please check your API key.")
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        response = st.write_stream(response_generator())
+    # Add assistant response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": response})

@@ -1,7 +1,15 @@
 import streamlit as st
 from views.chatbot_functions.response import response_generator
 
-st.title("Simple chat")
+
+# Clear chat button
+if st.button("Clear Chat"):
+    st.session_state.messages = []
+    # Refresh the page to clear the chat history
+    st.rerun()
+
+
+st.title("Talk with AInama Bot!")
 
 
 # Initialize chat history
@@ -32,8 +40,3 @@ if prompt := st.chat_input("What is up?"):
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
 
-# Restart chat button
-if st.button("Restart Chat"):
-    st.session_state.messages = []
-    # Refresh the page to clear the chat history
-    st.rerun()

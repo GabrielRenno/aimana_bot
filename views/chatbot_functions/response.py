@@ -1,9 +1,32 @@
 import streamlit as st
+import os
+from dotenv import load_dotenv
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema.output_parser import StrOutputParser
+from langchain_openai import ChatOpenAI
+
+# Create a ChatOpenAI model
+model = ChatOpenAI(model="gpt-4o", api_key="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")
+
+# Define prompt templates (no need for separate Runnable chains)
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", """You are a helpful and nice bot that answers the users question in the best manner possible
+         Here is the question: {user_query}. Do not say anything that is not related to the question and if you 
+         do not know the answer, just say you do not know. Use the following chat history to generate the response:
+         {chat_history}"""),
+    ]
+)
+
+# Create the combined chain using LangChain Expression Language (LCEL)
+chain = prompt_template | model | StrOutputParser()
+
 
 def response_generator(prompt, messages):
     response = prompt
     messages = messages
     st.write(messages)
+    response = chain.invoke({"user_query": prompt, "chat_history": messages})
     return str(response)
 
 

@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain_openai import ChatOpenAI
-
+st.write(st.secrets)
 # Create a ChatOpenAI model
 model = ChatOpenAI(model="gpt-4o", api_key=st.secrets.OPENAI_API_KEY)
 

@@ -41,7 +41,7 @@ if prompt := st.chat_input("What is up?"):
         for word in response.split():
             complete_string += word + " "
             response_container.markdown(complete_string + " ", unsafe_allow_html=True)
-            time.sleep(0.05)
+            time.sleep(0.07)
         response_container.markdown(response, unsafe_allow_html=True)
     
     # Add assistant response to chat history

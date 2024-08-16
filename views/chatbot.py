@@ -14,7 +14,7 @@ def response_generator():
     )
     for word in response.split():
         yield word + " "
-        time.sleep(0.05)
+        time.sleep(0.07)
 
 
 st.title("Simple chat")

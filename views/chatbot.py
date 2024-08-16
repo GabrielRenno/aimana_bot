@@ -7,8 +7,8 @@ st.title("Simple chat")
 if st.button("Restart Chat"):
     st.session_state.messages = []
     # Refresh the page to clear the chat history
-    st.experimental_rerun()
-    
+    st.rerun()
+
 
 # Initialize chat history
 if "messages" not in st.session_state:

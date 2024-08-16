@@ -8,13 +8,13 @@ st.title("Simple chat")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    # Define the avatar based on the role
-    avatar = ":material/smart_toy:" if message["role"] == "assistant" else ":material/person:"
-    
-    with st.chat_message(message["role"], avatar=avatar):
-        st.markdown(message["content"])
+    # Display chat messages from history on app rerun
+    for message in st.session_state.messages:
+        # Define the avatar based on the role
+        avatar = ":material/smart_toy:" if message["role"] == "assistant" else ":material/person:"
+        
+        with st.chat_message(message["role"], avatar=avatar):
+            st.markdown(message["content"])
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):

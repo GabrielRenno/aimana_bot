@@ -31,9 +31,10 @@ if prompt := st.chat_input("What is up?"):
     
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
+
+
 # Restart chat button
-if st.button("Restart Chat"):
-    st.session_state.messages = []
-    # Stop displaying messages
-    st.stop()
+def reset_conversation():
+  st.session_state.messages = None
+st.button('Reset Chat', on_click=reset_conversation)
     

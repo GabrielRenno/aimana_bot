@@ -25,7 +25,6 @@ chain = prompt_template | model | StrOutputParser()
 def response_generator(prompt, messages):
     response = prompt
     messages = messages
-    st.write(messages)
     response = chain.invoke({"user_query": prompt, "chat_history": messages})
     return str(response)
 

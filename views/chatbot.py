@@ -40,7 +40,7 @@ if prompt := st.chat_input("What is up?"):
         complete_string = ""
         for word in response.split():
             complete_string += word + " "
-            response_container.markdown(word + " ", unsafe_allow_html=True)
+            response_container.markdown(complete_string + " ", unsafe_allow_html=True)
             time.sleep(2.05)
         response_container.markdown(response, unsafe_allow_html=True)
     

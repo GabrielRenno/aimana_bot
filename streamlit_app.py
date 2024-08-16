@@ -51,7 +51,7 @@ if authentication_status == True:
 
     chatbot_page = st.Page(
         page = "views/chatbot.py",
-        #title = "Chatbot",
+        title = "Chatbot",
         icon = ":material/smart_toy:" 
     )
 
@@ -59,19 +59,12 @@ if authentication_status == True:
     # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
     pg = st.navigation(pages = [login_page, chatbot_page])
 
-    # --- NAVIGATION SETUP [WITH SECTIONS] ---
-    #pg = st.navigation(
-    #    {
-    #        "About": [login_page],
-    #        "Funtionalities": [chatbot_page]
-    #    })
-
     # --- SHARED ON ALL PAGES ---
     st.logo("assets/logo.jpeg")
     auth.logout(":material/logout:",'sidebar')
     st.sidebar.text("Developed by Aimana")
-
-
+    st.sidebar.text("Version 0.0.1")
+    
     # --- RUN NAVIGATION ---
     pg.run()
 

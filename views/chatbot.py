@@ -3,12 +3,6 @@ from views.chatbot_functions.response import response_generator
 
 st.title("Simple chat")
 
-# Restart chat button
-if st.button("Restart Chat"):
-    st.session_state.messages = []
-    # Refresh the page to clear the chat history
-    st.rerun()
-
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -37,3 +31,9 @@ if prompt := st.chat_input("What is up?"):
     
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
+
+# Restart chat button
+if st.button("Restart Chat"):
+    st.session_state.messages = []
+    # Refresh the page to clear the chat history
+    st.rerun()

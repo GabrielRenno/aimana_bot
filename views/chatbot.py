@@ -1,10 +1,11 @@
 import openai
 import streamlit as st
+from openai.error import AuthenticationError  # Import the correct exception
 
 st.title("ChatGPT-like clone")
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "your_openai_api_key"
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
@@ -35,5 +36,7 @@ if prompt := st.chat_input("What is up?"):
         with st.chat_message("assistant"):
             st.markdown(assistant_message)
 
-    except openai.error.AuthenticationError:
+    except AuthenticationError:
         st.error("Authentication failed. Please check your API key.")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")

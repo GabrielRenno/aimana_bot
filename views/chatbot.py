@@ -3,6 +3,10 @@ from views.chatbot_functions.response import response_generator
 
 st.title("Simple chat")
 
+# Restart chat button
+if st.button("Restart Chat"):
+    st.session_state.messages = []
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -25,6 +29,8 @@ if prompt := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=":material/smart_toy:"):
-        response = st.write_stream(response_generator())
+        response = response_generator()  # Get the assistant's response
+        st.markdown(response)
+    
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})

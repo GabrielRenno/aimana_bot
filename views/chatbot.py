@@ -33,11 +33,11 @@ if prompt := st.chat_input("What is up?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar=":material/person:"):
         st.markdown(prompt)
 
     # Display assistant response in chat message container
-    with st.chat_message("assistant", avatar=":material/account_circle:"):
+    with st.chat_message("assistant", avatar=":material/smart_toy:"):
         response = st.write_stream(response_generator())
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})

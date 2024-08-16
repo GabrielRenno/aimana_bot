@@ -8,10 +8,7 @@ import yaml
 from yaml.loader import SafeLoader
 with open('auth/credentials.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
-#Load hashed passwords
-file_path = "auth/hashed.pkl"
-with open(file_path, "rb") as file:
-    hashed_passwords = pickle.load(file)
+
 
 #Create authenticator
 auth = stauth.Authenticate(

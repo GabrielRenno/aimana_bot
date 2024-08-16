@@ -17,14 +17,14 @@ prompt_template = ChatPromptTemplate.from_messages(
 )
 
 # Create the combined chain using LangChain Expression Language (LCEL)
-chain = prompt_template | model | StrOutputParser()
+#chain = prompt_template | model | StrOutputParser()
 
 
 def response_generator(prompt, messages):
     response = prompt
     messages = messages
     st.write(messages)
-    response = chain.invoke({"user_query": prompt, "chat_history": messages})
+    response = "yes" #chain.invoke({"user_query": prompt, "chat_history": messages})
     return str(response)
 
 

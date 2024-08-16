@@ -38,7 +38,7 @@ if prompt := st.chat_input("What is up?"):
         # Stream the response word by word
         response_container = st.empty()
         for word in response.split():
-            response_container.markdown(word + " ", unsafe_allow_html=True)
+            response_container += response_container.markdown(word + " ", unsafe_allow_html=True)
             time.sleep(2.05)
         response_container.markdown(response, unsafe_allow_html=True)
     

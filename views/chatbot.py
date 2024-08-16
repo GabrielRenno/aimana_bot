@@ -9,7 +9,7 @@ if st.button("Clear Chat"):
     st.rerun()
 
 
-st.title("Talk with AInama Bot!")
+st.title("Talk with AImana Bot!")
 
 
 # Initialize chat history

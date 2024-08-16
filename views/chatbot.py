@@ -4,7 +4,7 @@ from openai import OpenAI
 
 st.title("ChatGPT-like clone")
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key="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")
 #client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 if "openai_model" not in st.session_state:

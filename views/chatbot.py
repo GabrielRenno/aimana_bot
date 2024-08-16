@@ -34,7 +34,7 @@ if prompt := st.chat_input("What is up?"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar=":material/smart_toy:"):
-        response = response_generator(prompt)  # Get the assistant's response
+        response = response_generator(prompt,st.session_state.messages)  # Get the assistant's response
         # Stream the response word by word
         response_container = st.empty()
         complete_string = ""

@@ -2,10 +2,12 @@ import streamlit as st
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain_openai import ChatOpenAI
-
+# Load dotenv
+from dotenv import load_dotenv
+load_dotenv()
 
 # Create a ChatOpenAI model
-model = ChatOpenAI(model="gpt-4o", api_key=st.secrets.openai.OPENAI_API_KEY)
+model = ChatOpenAI(model="gpt-4o")#, api_key=st.secrets.openai.OPENAI_API_KEY)
 
 
 # Define prompt templates (no need for separate Runnable chains)

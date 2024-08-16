@@ -25,7 +25,8 @@ if "messages" not in st.session_state:
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
-    with st.chat_message(message["role"], avatar=":material/smart_toy:"):
+    with st.chat_message(message["role"], 
+                         avatar = lambda message: ":material/smart_toy:" if message["role"] == "assistant" else ":material/person:" ):
         st.markdown(message["content"])
 
 # Accept user input

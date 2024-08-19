@@ -8,13 +8,12 @@ if st.button("Clear Chat"):
     # Refresh the page to clear the chat history
     st.rerun()
 
-
-st.title("Talk with the AImana Bot!")
-
-
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    # Display welcome message
+    st.session_state.messages.append({"role": "assistant", "content": "Hello! I am AImana, a chatbot. How can I help you today?"})
+
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:

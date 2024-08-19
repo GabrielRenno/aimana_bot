@@ -77,3 +77,4 @@ urllib3==2.2.2
 yarl==1.9.4
 python-dotenv==0.10.1
 python-editor==1.0.4
+streamlit-option-menu

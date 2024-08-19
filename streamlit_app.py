@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import streamlit_authenticator as stauth
 import yaml
+from streamlit_option_menu import option_menu
 
 
 ## REMOVE STREAMLIT HEADER AND FOOTER
@@ -30,8 +31,9 @@ auth = stauth.Authenticate(
 )
 
 
-name, authentication_status, username = auth.login('main')
 
+name, authentication_status, username = auth.login('main')
+    
 
 if authentication_status == False:
     st.error("Username or password is incorrect. Please try again.")
@@ -39,10 +41,11 @@ if authentication_status == False:
 if authentication_status == None:
     st.warning("Please enter your username and password.")
 
+
 if authentication_status == True:
     
     # --- PAGE SETUP ---
-    login_page = st.Page(
+    about_page = st.Page(
         page = "views/about.py",
         title = "AImana",
         icon = ":material/account_circle:", #https://fonts.google.com/icons
@@ -57,10 +60,17 @@ if authentication_status == True:
 
 
     # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
-    pg = st.navigation(pages = [login_page, chatbot_page])
+    pg = st.navigation(pages = [about_page, chatbot_page])
 
     # --- SHARED ON ALL PAGES ---
     st.logo("assets/logo.jpeg")
+    st.sidebar.markdown("""
+        <style>
+        [data-testid='stSidebarNav'] > ul {
+            min-height: 70vh;
+        } 
+        </style>
+        """, unsafe_allow_html=True)
     auth.logout(":material/logout:",'sidebar')
     st.sidebar.text("Developed by AImana")
     st.sidebar.text("Version 0.0.1")

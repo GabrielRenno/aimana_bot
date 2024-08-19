@@ -58,9 +58,22 @@ if authentication_status == True:
         icon = ":material/smart_toy:" 
     )
 
+    settings_page = st.Page(
+        page = "views/settings.py",
+        title = "Settings",
+        icon = ":material/settings:" 
+    )
+
+    knowledge_base_page = st.Page(
+        page = "views/knowledge_base.py",
+        title = "Knowledge Base",
+        icon = ":material/auto_stories:"
+    )
+
+
 
     # --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
-    pg = st.navigation(pages = [about_page, chatbot_page])
+    pg = st.navigation(pages = [about_page, chatbot_page, knowledge_base_page, settings_page])
 
     # --- SHARED ON ALL PAGES ---
     st.logo("assets/logo.jpeg")
